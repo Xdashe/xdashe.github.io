@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roger Rebordosa Garcia | Tècnic informàtic</title>
+  <meta name="description" content="Portfoli de Roger Rebordosa, tècnic en Sistemes Microinformàtics i Xarxes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050b2e;
+      --bg-card: #0d1748;
+      --accent: #4cc9f0;
+      --text: #e8ecff;
+      --muted: #9aa4d4;
+      --line: #22306e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #0a1a8c 0%, var(--bg) 45%);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navegació */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(5, 11, 46, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    nav .logo { font-weight: 800; color: var(--text); letter-spacing: 1px; }
+    nav ul { display: flex; gap: 24px; list-style: none; }
+    nav ul a { color: var(--muted); font-size: 0.9rem; }
+    nav ul a:hover { color: var(--accent); }
+
+    /* Capçalera */
+    header { padding: 80px 0 60px; }
+    header .wrap { display: flex; align-items: center; gap: 48px; }
+    .photo {
+      width: 200px; height: 200px; border-radius: 50%; flex-shrink: 0;
+      object-fit: cover; border: 4px solid var(--accent);
+      box-shadow: 0 0 40px rgba(76, 201, 240, 0.3);
+    }
+    h1 { font-size: 3rem; font-weight: 800; line-height: 1.05; text-transform: uppercase; }
+    .role { color: var(--accent); font-size: 1.1rem; margin: 8px 0 16px; letter-spacing: 1px; }
+    .about { color: var(--muted); max-width: 520px; }
+    .buttons { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 22px; border-radius: 8px; font-weight: 500; font-size: 0.95rem;
+      border: 1px solid var(--accent); transition: 0.2s;
+    }
+    .btn.primary { background: var(--accent); color: var(--bg); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(76, 201, 240, 0.3); }
+
+    /* Seccions */
+    section { padding: 50px 0; border-top: 1px solid var(--line); }
+    h2 {
+      font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+    }
+
+    /* Línia de temps */
+    .timeline { border-left: 2px solid var(--line); padding-left: 28px; }
+    .item { position: relative; margin-bottom: 32px; }
+    .item:last-child { margin-bottom: 0; }
+    .item::before {
+      content: ''; position: absolute; left: -36px; top: 6px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--bg); border: 3px solid var(--accent);
+    }
+    .date { font-size: 0.85rem; color: var(--muted); }
+    .badge {
+      display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 99px;
+      background: rgba(76, 201, 240, 0.15); color: var(--accent); font-size: 0.75rem;
+    }
+    .item h3 { font-size: 1.15rem; margin: 2px 0; }
+    .place { color: var(--accent); font-size: 0.95rem; margin-bottom: 6px; }
+    .item p { color: var(--muted); }
+
+    /* Habilitats */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+    .card h3 { font-size: 1rem; margin-bottom: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      padding: 6px 12px; border-radius: 6px; font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--line);
+    }
+
+    /* Idiomes */
+    .langs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .lang { text-align: center; }
+    .lang strong { display: block; font-size: 1.05rem; }
+    .lang span { color: var(--muted); font-size: 0.9rem; }
+
+    /* Contacte */
+    .contact p { color: var(--muted); margin-bottom: 20px; }
+    footer { text-align: center; padding: 30px 0; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); }
+
+    /* Mòbil */
+    @media (max-width: 700px) {
+      nav ul { display: none; }
+      header { padding: 50px 0 40px; }
+      header .wrap { flex-direction: column; text-align: center; gap: 28px; }
+      .photo { width: 160px; height: 160px; }
+      h1 { font-size: 2.2rem; }
+      .about { margin: 0 auto; }
+      .buttons { justify-content: center; }
+      .skills-grid, .langs { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="#" class="logo">RR</a>
+      <ul>
+        <li><a href="#experiencia">Experiència</a></li>
+        <li><a href="#formacio">Formació</a></li>
+        <li><a href="#habilitats">Habilitats</a></li>
+        <li><a href="#contacte">Contacte</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <img src="foto.jpg" alt="Roger Rebordosa" class="photo">
+      <div>
+        <h1>Roger<br>Rebordosa</h1>
+        <p class="role">Tècnic en Sistemes Microinformàtics i Xarxes</p>
+        <p class="about">
+          Estudiant de grau mitjà d'informàtica amb molt d'interès pel sector,
+          especialment per la intel·ligència artificial. Tinc previst cursar el
+          cicle superior de DAM. Sóc una persona segura, autònoma i capaç
+          d'afrontar qualsevol repte que se'm plantegi.
+        </p>
+        <div class="buttons">
+          <a href="#contacte" class="btn primary">Contacta'm</a>
+          <a href="cv.pdf" class="btn" download>Descarrega el CV</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="experiencia">
+    <div class="wrap">
+      <h2>Experiència</h2>
+      <div class="timeline">
+        <div class="item">
+          <span class="date">Juny 2026 – Febrer 2027</span><span class="badge">En curs</span>
+          <h3>Pràctiques d'empresa</h3>
+          <p class="place">Intuate S.L. · Vilafranca del Penedès</p>
+          <p>
+            Pràctiques de grau mitjà (515 hores) en una empresa del sector de la biometria.
+            Administració, creació i configuració d'un servidor al núvol, i muntatge
+            de terminals iEduca.
+          </p>
+        </div>
+        <div class="item">
+          <span class="date">2025 · 1 mes</span>
+          <h3>Servei comunitari</h3>
+          <p class="place">ADF · Sant Sadurní d'Anoia</p>
+          <p>
+            Servei comunitari amb l'Agrupació de Defensa Forestal, dins del programa
+            de l'ESO, col·laborant en tasques de protecció del medi ambient.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formacio">
+    <div class="wrap">
+      <h2>Formació</h2>
+      <div class="timeline">
+        <div class="item">
+          <span class="date">2025 – 2027</span><span class="badge">En curs</span>
+          <h3>CFGM Sistemes Microinformàtics i Xarxes</h3>
+          <p class="place">IES Eugeni d'Ors · Vilafranca del Penedès</p>
+          <p>
+            Muntatge i manteniment d'equips informàtics i sistemes operatius,
+            configuració de xarxes locals i desenvolupament d'aplicacions web.
+          </p>
+        </div>
+        <div class="item">
+          <span class="date">2021 – 2025</span>
+          <h3>Educació Secundària Obligatòria</h3>
+          <p class="place">Institut Jacint Verdaguer · Sant Sadurní d'Anoia</p>
+          <p>Matrícula d'excel·lència en Digitalització (10 en tots els trimestres).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilitats">
+    <div class="wrap">
+      <h2>Habilitats</h2>
+      <div class="skills-grid">
+        <div class="card">
+          <h3>Tècniques</h3>
+          <div class="tags">
+            <span class="tag">Muntatge d'equips</span>
+            <span class="tag">Manteniment de hardware</span>
+            <span class="tag">Sistemes operatius</span>
+            <span class="tag">Xarxes locals</span>
+            <span class="tag">Servidors al núvol</span>
+            <span class="tag">Aplicacions web</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Personals</h3>
+          <div class="tags">
+            <span class="tag">Autonomia</span>
+            <span class="tag">Gestió del temps</span>
+            <span class="tag">Treball en equip</span>
+            <span class="tag">Presa de decisions</span>
+            <span class="tag">Pensament estratègic</span>
+            <span class="tag">Constància</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="idiomes">
+    <div class="wrap">
+      <h2>Idiomes</h2>
+      <div class="langs">
+        <div class="card lang"><strong>Català</strong><span>Llengua materna</span></div>
+        <div class="card lang"><strong>Castellà</strong><span>Llengua materna</span></div>
+        <div class="card lang"><strong>Anglès</strong><span>Nivell B1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacte" class="contact">
+    <div class="wrap">
+      <h2>Contacte</h2>
+      <p>Busques algú motivat per al teu equip? Escriu-me i et respondré tan aviat com pugui.</p>
+      <div class="buttons">
+        <a href="mailto:rrebordosa3@gmail.com" class="btn primary">rrebordosa3@gmail.com</a>
+        <span class="btn">Sant Sadurní d'Anoia, Barcelona</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Roger Rebordosa Garcia</footer>
+
+</body>
+</html>
